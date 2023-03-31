@@ -1,0 +1,112 @@
+category:
+- Antenna
+- Buzzer
+- Capacitor - Electrolytic
+- Capacitor - MLCC
+- Capacitor - Tantalum
+- Connector
+- Connector - Audio
+- Connector - RF
+- Connector - USB
+- Crystal
+- Diode
+- Filter
+- Fuse
+- IC
+- IC - Battery
+- IC - Flash Memory
+- IC - LED Driver
+- IC - Microcontroller
+- IC - Voltage Regulator
+- Inductor
+- LED
+- Power Module
+- Relay
+- Resistor
+- Resistor - Variable
+- Sensor
+- Switch
+- Transistor - BJT
+- Transistor - MOSFET
+- Wireless Module
+footprint:
+- 0402 (1005)
+- 0603 (1608)
+- 0805 (2012)
+- 1206 (3216)
+- 1210 (3225)
+- 1411 (3528)
+- 1414 (3535)
+- 2312 (6032)
+- 2917 (7343)
+- 4-X2SON (1x1)
+- DFN-1025-10
+- DFN-1610-2
+- DIP-16
+- DIP-18
+- DIP-8
+- DO-15
+- DO-201AD
+- DO-27
+- DO-35
+- DO-41
+- EC-4.3
+- EC-5.3
+- EC-6.6
+- LGA-14
+- QFN-16-4x4
+- QFN-20-3x3-EP
+- QFN-20-4x4-EP
+- QFN-24-4x4-EP
+- QFN-28-5x5-EP
+- QFN-32-5x5-0.5P-EP
+- QFN-32-5x5-EP
+- QFN-48-6x6-0.4P-EP
+- QFN-68-8x8
+- SMA
+- SMD2520-4P
+- SMD3215-2P
+- SMD3225-4P
+- SMD3535
+- SMD5050
+- SMD5730
+- SOD-123
+- SOD-128
+- SOD-323
+- SOD-523
+- SOD-80
+- SOIC-16
+- SOIC-8
+- SOIC-8-5.3W
+- SOIC-8-EP
+- SOT-223
+- SOT-223-6
+- SOT-23
+- SOT-23-5
+- SOT-23-6
+- SOT-323-3
+- SOT-353
+- SOT-363-6
+- SOT-753
+- SOT-89-3
+- SOT-89-5
+- TDFN-6-1x1
+- TO-220
+- TO-252
+- TO-263-5
+- TO-263-6
+- TO-89
+- TO-92
+- TQFN-32-7x7
+- TSSOP-14
+- TSSOP-8
+- U-DFN2020-6
+- U-DFN3030-10
+- U-DFN3030-8
+- VFDFN-10
+- VSOP-8-0.5
+- WQFN-12-2x3
+- X1-DFN1006-2
+- X2-DFN1010-4
+- X2-WLB0606-4
+- aQFN-73-7x7-EP

@@ -39,7 +39,7 @@ Another thing that was tricky was getting the right category and footprint since
 - [ ] Combine the scripts and unify duplicate code to allow for one script to provide the complete flow.
 - [ ] Add a graphical user interface to interact with the script, upload BOMs, view errors etc.
 - [ ] Make the scripts more robust and make the errors more verbose.
-- [ ] Add footprint and category options in a json or yaml file and write a script to auto update them. 
+- [x] Add footprint and category options in a json or yaml file and write a script to auto update them. 
 - [ ] Make the footprint and category matching code to be smarter
 - [ ] Add all equivalent footprint names eq SOT-23-5 = SOT-25
 - [ ] Add standard description definitions and populate the description for each type of component.

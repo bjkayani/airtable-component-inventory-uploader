@@ -8,19 +8,22 @@ from selenium.webdriver.chrome.options import Options
 from selenium.common.exceptions import NoSuchElementException
 import time
 import os
-from constants import category_list
-from constants import footprint_list
 from config import IMG_BB_API_KEY
 import requests
 import base64
-import string
+import yaml
+from airtable_field_options_importer import import_field_options
 
 lcsc_drop_column_list = ['Customer NO.', 'RoHS', 'Min\Mult Order Qty.', 'Order Price', 'Product Link', 'Customer #', 'Customer NO.', 'Product Link']
 
 digikey_drop_column_list = ['Index', 'Description', 'Customer Reference', 'Extended Price']
 
 def find_category(category_text):
-    for cat in category_list:
+    with open('field_options.yaml', 'r') as file:
+        field_options = yaml.full_load(file)
+    category_field_options = field_options['category']
+
+    for cat in category_field_options:
         cat_split = cat.split(" ")
         for cat_split_element in cat_split:
             if cat_split_element in category_text:
@@ -31,7 +34,11 @@ def find_category(category_text):
 
 # TODO: Deal with SOP Package
 def find_footprint(footprint_text):
-    for fp in footprint_list:
+    with open('field_options.yaml', 'r') as file:
+        field_options = yaml.full_load(file)
+    footprint_field_options = field_options['footprint']
+
+    for fp in footprint_field_options:
         fp_split = fp.split(" ")
         for fp_split_element in fp_split:
             if fp_split_element in footprint_text:
@@ -81,6 +88,9 @@ def load_digikey_bom(file_path):
 def get_processed_digikey_bom(bom_path):
 
     digikey_bom = load_digikey_bom(bom_path)
+
+    # Update field options list from Airtable
+    import_field_options()
 
     # Remove unwanted columns
     for column in digikey_drop_column_list:
@@ -230,6 +240,9 @@ def get_processed_digikey_bom(bom_path):
 def get_processed_lcsc_bom(bom_path):
 
     lcsc_bom = load_lcsc_bom(bom_path)
+
+    # Update field options list from Airtable
+    import_field_options()
 
     # Remove unwanted columns
     for column in lcsc_drop_column_list:
