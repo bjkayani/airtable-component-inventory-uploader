@@ -4,7 +4,7 @@ This project is used to automatically upload electronic components to my Airtabl
 
 ## Airtable Inventory
 
-<img src="images/Screenshot%202023-03-23%20182859.png" alt="Airtable Inventory Screenshot" width="800" height="400">
+<img src="res/Screenshot%202023-03-23%20182859.png" alt="Airtable Inventory Screenshot" width="800" height="400">
 
 This is what my Airtable component inventory looks like. I mainly use it to store information about all my electronic components that are used on circuit boards. You can browse around using [this link](https://airtable.com/shr21ZMnu0kvK3dMV).
 
@@ -39,4 +39,8 @@ Another thing that was tricky was getting the right category and footprint since
 - [ ] Combine the scripts and unify duplicate code to allow for one script to provide the complete flow.
 - [ ] Add a graphical user interface to interact with the script, upload BOMs, view errors etc.
 - [ ] Make the scripts more robust and make the errors more verbose.
-
+- [ ] Add footprint and category options in a json or yaml file and write a script to auto update them. 
+- [ ] Make the footprint and category matching code to be smarter
+- [ ] Add all equivalent footprint names eq SOT-23-5 = SOT-25
+- [ ] Add standard description definitions and populate the description for each type of component.
+- [ ] Train a ML model to find subject in the LCSC pictures and crop in on it if its small

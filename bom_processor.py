@@ -148,6 +148,8 @@ def get_processed_digikey_bom(bom_path):
 
         # Save the image
         image_name = digikey_bom.loc[index, 'Manufacturer Part Number'] + ".jpg"
+        image_name = image_name.replace("/", "-")
+        print(image_name)
         with open("images/" + image_name, "wb") as f:
             f.write(requests.get(image_url).content)
 
@@ -186,12 +188,12 @@ def get_processed_digikey_bom(bom_path):
             digikey_bom.loc[index, 'Datasheet'] = 'None'
             print("Cant get Datasheet URL")
 
+
         # Get the detailed description
 
         description_xpaths = ['/html/body/div[3]/main/div/div[1]/div[1]/div[2]/div/table/tbody/tr[6]/td[2]/div',
                               '/html/body/div[3]/main/div/div[1]/div[1]/div[2]/div/table/tbody/tr[5]/td[2]/div']
         
-        # Get the url of the datasheet
         try:
             for xpath in description_xpaths:
                 try:
@@ -203,7 +205,7 @@ def get_processed_digikey_bom(bom_path):
             digikey_bom.loc[index, 'Description'] = str(description_text)
             print(f'Description: {description_text}')
         except Exception as e:
-            digikey_bom.loc[index, 'Type'] = 'None'
+            digikey_bom.loc[index, 'Description'] = 'None'
             print("Cant get description")
 
         # Get the footprint match using the description text
@@ -234,15 +236,6 @@ def get_processed_lcsc_bom(bom_path):
         if column in lcsc_bom.columns:
             lcsc_bom.drop(column, axis=1, inplace=True)
 
-    # Replace footprints with inventory syntax
-    for index, row in lcsc_bom.iterrows():
-        closest_match = find_footprint(row[3])
-        if closest_match:
-            lcsc_bom.iloc[index, 3] = closest_match
-        else:
-            lcsc_bom.iloc[index, 3] = ''
-
-
     chrome_options = Options()
     # chrome_options.add_argument('--headless')
 
@@ -265,7 +258,7 @@ def get_processed_lcsc_bom(bom_path):
 
     for index, row in lcsc_bom.iterrows():
 
-        print(f"Processing component: {lcsc_bom.loc[index, 'Manufacturer Part Number']}")
+        print(f" \nProcessing component: {lcsc_bom.loc[index, 'Manufacturer Part Number']}")
 
         # Enter the part number in the search field
         try:
@@ -343,6 +336,15 @@ def get_processed_lcsc_bom(bom_path):
         except Exception as e:
             lcsc_bom.loc[index, 'Datasheet'] = 'None'
             print("Cant get Datasheet URL")
+
+        # Find closest match to inventory footprint and replace
+        closest_match = find_footprint(lcsc_bom.loc[index, 'Package'])
+        if closest_match:
+            lcsc_bom.loc[index, 'Package'] = closest_match
+            print(f"Footprint: {lcsc_bom.loc[index, 'Package']}")
+        else:
+            print(f"Footprint not found: {lcsc_bom.loc[index, 'Package']}")
+            lcsc_bom.loc[index, 'Package'] = ''
 
         # Clear the search field
         search_field.send_keys(Keys.CONTROL + "a" + Keys.DELETE)

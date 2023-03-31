@@ -41,7 +41,7 @@ def get_csv_bom_file():
         else:
             print(colored('Invalid choice. Please try again.', 'red'))
 
-print(colored('---------- Digikey BOM Airtable Importer ----------', 'blue'))
+print(colored('---------- Digikey BOM Airtable Importer ----------', 'red'))
 
 bom_path = get_csv_bom_file()
 
